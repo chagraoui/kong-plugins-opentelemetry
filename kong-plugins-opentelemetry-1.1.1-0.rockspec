@@ -6,7 +6,7 @@ source = {
   url = "git+https://github.com/chagraoui/kong-plugins-opentelemetry",
 }
 
-local pluginName = package:match("^kong%-plugin%-(.+)$")  -- "opentelemetry"
+local pluginName = "kong-plugin-opentelemetryCustom"
 supported_platforms = {"linux", "macosx"}
 
 
