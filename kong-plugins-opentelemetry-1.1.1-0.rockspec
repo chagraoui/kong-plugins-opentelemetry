@@ -4,7 +4,6 @@ version = "1.1.1-0"
 
 source = {
   url = "git+https://github.com/chagraoui/kong-plugins-opentelemetry",
-  tag = "v1.1.1",
 }
 
 
