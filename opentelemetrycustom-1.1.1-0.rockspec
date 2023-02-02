@@ -1,4 +1,4 @@
-package = "kong-plugins-opentelemetry"
+package = "opentelemetrycustom"
 
 version = "1.1.1-0"
 
@@ -8,7 +8,7 @@ source = {
 
 
 
-local pluginName = "kong-plugin-opentelemetryCustom"
+local pluginName = "opentelemetryCustom"
 supported_platforms = {"linux", "macosx"}
 
 

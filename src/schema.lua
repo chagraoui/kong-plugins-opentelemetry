@@ -28,7 +28,7 @@ local resource_attributes = Schema.define {
 }
 
 return {
-  name = "opentelemetry",
+  name = "opentelemetrycustom",
   fields = {
     { protocols = typedefs.protocols_http }, -- TODO: support stream mode
     { config = {
