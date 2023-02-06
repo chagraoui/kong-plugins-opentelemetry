@@ -8,7 +8,7 @@ source = {
 
 
 
-local pluginName = "opentelemetryCustom"
+local pluginName = "opentelemetrycustom"
 supported_platforms = {"linux", "macosx"}
 
 

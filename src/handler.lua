@@ -67,8 +67,8 @@ local function http_export_request(conf, pb_data, headers)
     body = pb_data,
     headers = headers,
   })
-  ngx_log(ngx_DEBUG, _log_prefix, "data sent to apm: ", pb_data)
-  ngx_log(ngx_DEBUG, _log_prefix, "headers sent to apm: ", headers)
+  --ngx_log(ngx_DEBUG, _log_prefix, "data sent to apm: ", pb_data)
+  --ngx_log(ngx_DEBUG, _log_prefix, "headers sent to apm: ", headers)
 
   if not res then
     return false, "failed to send request: " .. err
