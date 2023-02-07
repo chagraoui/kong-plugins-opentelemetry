@@ -83,6 +83,10 @@ local function http_export(conf, spans)
   local payload = encode_traces(spans, conf.resource_attributes)
 
   local ok, err = http_export_request(conf, payload, headers)
+  ngx_log(ngx_DEBUG, _log_prefix, "conf: ", confS)
+  ngx_log(ngx_DEBUG, _log_prefix, "payload: ", payload)
+  ngx_log(ngx_DEBUG, _log_prefix, "headers: ", headers)
+
 
   ngx_update_time()
   local duration = ngx_now() - start
