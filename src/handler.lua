@@ -24,7 +24,7 @@ local transform_span = otlp.transform_span
 local _log_prefix = "[otel] "
 
 local OpenTelemetryHandler = {
-  VERSION = "0.1.0",
+  VERSION = "1.1.1",
   PRIORITY = 14,
 }
 
