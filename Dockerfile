@@ -10,5 +10,5 @@ USER root
 ENV KONG_PLUGINS="bundled,opentelemetrycustom"
 
 RUN mkdir /usr/local/share/lua/5.1/kong/plugins/opentelemetrycustom
-COPY --from=builder  /opentelemetrycustom/src/. /usr/local/share/lua/5.1/kong/plugins/opentelemetrycustom
+COPY --from=builder  /opentelemetrycustom/. /usr/local/share/lua/5.1/kong/plugins/opentelemetrycustom
 USER kong

@@ -21,9 +21,9 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["kong.plugins.opentelemetry.proto"] = "src/proto.lua",
-    ["kong.plugins.opentelemetry.otlp"] = "src/otlp.lua",
-    ["kong.plugins.opentelemetry.handler"] = "src/handler.lua",
-    ["kong.plugins.opentelemetry.schema"]  = "src/schema.lua"
+    ["kong.plugins.opentelemetry.proto"] = "proto.lua",
+    ["kong.plugins.opentelemetry.otlp"] = "otlp.lua",
+    ["kong.plugins.opentelemetry.handler"] = "handler.lua",
+    ["kong.plugins.opentelemetry.schema"]  = "schema.lua"
   }
 }
