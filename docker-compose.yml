@@ -43,7 +43,7 @@ services:
   #######################################
   kong-migration:
     build: .
-    command: kong migrations bootstrap
+    command: kong migrations up
     networks:
        kong-net:
          ipv4_address: 172.26.0.2
@@ -124,6 +124,9 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    networks:
+       kong-net:
+         ipv4_address: 172.26.0.8 
     environment:
       - node.name=elasticsearch
       - cluster.name=apm
@@ -156,6 +159,7 @@ services:
           -E apm-server.kibana.enabled=true
           -E apm-server.kibana.host=kibana:5601
           -E output.elasticsearch.hosts=["elasticsearch:9200"]
+          -d "*"
     ports:
       - "8200:8200"
     networks:

@@ -60,6 +60,9 @@ end
 
 
 local function http_export_request(conf, pb_data, headers)
+
+  ngx_log(ngx_DEBUG, _log_prefix, " start http_export_request: ")
+
   local httpc = http.new()
   httpc:set_timeouts(conf.connect_timeout, conf.send_timeout, conf.read_timeout)
   local res, err = httpc:request_uri(conf.endpoint, {
@@ -67,6 +70,9 @@ local function http_export_request(conf, pb_data, headers)
     body = pb_data,
     headers = headers,
   })
+
+  ngx_log(ngx_DEBUG, _log_prefix, "body: ", pb_data)
+
   if not res then
     return false, "failed to send request: " .. err
 
@@ -74,19 +80,21 @@ local function http_export_request(conf, pb_data, headers)
     return false, "response error: " .. tostring(res.status) .. ", body: " .. tostring(res.body)
   end
 
+  ngx_log(ngx_DEBUG, _log_prefix, " res.status: ", res.status)
+
+
   return true
 end
 
 local function http_export(conf, spans)
+
+  ngx_log(ngx_DEBUG, _log_prefix, " start http_export: ")
+
   local start = ngx_now()
   local headers = get_cached_headers(conf.headers)
   local payload = encode_traces(spans, conf.resource_attributes)
 
   local ok, err = http_export_request(conf, payload, headers)
-  ngx_log(ngx_DEBUG, _log_prefix, "conf: ", confS)
-  ngx_log(ngx_DEBUG, _log_prefix, "payload: ", payload)
-  ngx_log(ngx_DEBUG, _log_prefix, "headers: ", headers)
-
 
   ngx_update_time()
   local duration = ngx_now() - start
@@ -153,6 +161,8 @@ function OpenTelemetryHandler:access()
 end
 
 function OpenTelemetryHandler:log(conf)
+
+  
   ngx_log(ngx_DEBUG, _log_prefix, "total spans in current request: ", ngx.ctx.KONG_SPANS and #ngx.ctx.KONG_SPANS)
 
   local queue_id = conf.__key__
